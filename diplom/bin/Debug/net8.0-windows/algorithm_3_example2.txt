@@ -1,0 +1,29 @@
+    public static void CombSort(List<int> values)
+    {
+        const double factor = 1.247;
+        double step = values.Count - 1;
+
+        while (step >= 1)
+        {
+            for (int i = 0; i + step < values.Count; i++)
+            {
+                if (values[i] > values[(int)(i + step)])
+                {
+                    (values[i], values[(int)(i + step)]) = (values[(int)(i + step)], values[i]);
+                }
+            }
+            step /= factor;
+        }
+        
+        // Bubble sort final pass
+        for (int i = 0; i + 1 < values.Count; i++)
+        {
+            for (int j = 0; j + 1 < values.Count - i; j++)
+            {
+                if (values[j + 1] < values[j])
+                {
+                    (values[j], values[j + 1]) = (values[j + 1], values[j]);
+                }
+            }
+        }
+    }

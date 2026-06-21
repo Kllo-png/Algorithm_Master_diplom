@@ -1,0 +1,7 @@
+int linearSearch(int arr[], int size, int elementToSearch) {
+    for (int index = 0; index < size; index++) {
+        if (arr[index] == elementToSearch)
+            return index;
+    }
+    return -1;
+}

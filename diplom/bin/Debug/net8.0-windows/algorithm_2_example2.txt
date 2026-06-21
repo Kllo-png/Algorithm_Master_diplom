@@ -1,0 +1,28 @@
+public static void ShakerSort(List<int> values)
+    {
+        if (values.Count == 0) return;
+        
+        int left = 0;
+        int right = values.Count - 1;
+        
+        while (left <= right)
+        {
+            for (int i = right; i > left; i--)
+            {
+                if (values[i - 1] > values[i])
+                {
+                    (values[i - 1], values[i]) = (values[i], values[i - 1]);
+                }
+            }
+            left++;
+            
+            for (int i = left; i < right; i++)
+            {
+                if (values[i] > values[i + 1])
+                {
+                    (values[i], values[i + 1]) = (values[i + 1], values[i]);
+                }
+            }
+            right--;
+        }
+    }

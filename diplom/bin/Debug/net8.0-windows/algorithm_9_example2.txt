@@ -1,0 +1,27 @@
+public static int JumpSearch(int[] integers, int elementToSearch)
+    {
+        int arrayLength = integers.Length;
+        int jumpStep = (int)Math.Sqrt(arrayLength);
+        int previousStep = 0;
+
+        while (integers[Math.Min(jumpStep, arrayLength) - 1] < elementToSearch)
+        {
+            previousStep = jumpStep;
+            jumpStep += (int)Math.Sqrt(arrayLength);
+            if (previousStep >= arrayLength)
+                return -1;
+        }
+        
+        while (integers[previousStep] < elementToSearch)
+        {
+            previousStep++;
+            if (previousStep == Math.Min(jumpStep, arrayLength))
+                return -1;
+        }
+
+        if (integers[previousStep] == elementToSearch)
+            return previousStep;
+        
+        return -1;
+    }
+}

@@ -1,0 +1,34 @@
+private static int Partition(List<int> values, int l, int r)
+    {
+        int x = values[r];
+        int less = l;
+
+        for (int i = l; i < r; i++)
+        {
+            if (values[i] <= x)
+            {
+                (values[i], values[less]) = (values[less], values[i]);
+                less++;
+            }
+        }
+        (values[less], values[r]) = (values[r], values[less]);
+        return less;
+    }
+
+    private static void QuickSortImpl(List<int> values, int l, int r)
+    {
+        if (l < r)
+        {
+            int q = Partition(values, l, r);
+            QuickSortImpl(values, l, q - 1);
+            QuickSortImpl(values, q + 1, r);
+        }
+    }
+
+    public static void QuickSort(List<int> values)
+    {
+        if (values.Count > 0)
+        {
+            QuickSortImpl(values, 0, values.Count - 1);
+        }
+    }

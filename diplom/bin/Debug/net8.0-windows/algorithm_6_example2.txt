@@ -1,0 +1,41 @@
+private static void MergeSortImpl(List<int> values, List<int> buffer, int l, int r)
+    {
+        if (l < r)
+        {
+            int m = (l + r) / 2;
+            MergeSortImpl(values, buffer, l, m);
+            MergeSortImpl(values, buffer, m + 1, r);
+
+            int k = l;
+            int i = l, j = m + 1;
+            while (i <= m || j <= r)
+            {
+                if (j > r || (i <= m && values[i] < values[j]))
+                {
+                    buffer[k] = values[i];
+                    i++;
+                }
+                else
+                {
+                    buffer[k] = values[j];
+                    j++;
+                }
+                k++;
+            }
+            
+            for (i = l; i <= r; i++)
+            {
+                values[i] = buffer[i];
+            }
+        }
+    }
+
+    public static void MergeSort(List<int> values)
+    {
+        if (values.Count > 0)
+        {
+            List<int> buffer = new List<int>(new int[values.Count]);
+            MergeSortImpl(values, buffer, 0, values.Count - 1);
+        }
+    }
+}

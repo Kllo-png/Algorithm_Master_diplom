@@ -1,0 +1,9 @@
+ public static int LinearSearch(int[] arr, int elementToSearch)
+    {
+        for (int index = 0; index < arr.Length; index++)
+        {
+            if (arr[index] == elementToSearch)
+                return index;
+        }
+        return -1;
+    }
